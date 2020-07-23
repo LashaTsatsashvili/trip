@@ -1,6 +1,6 @@
 import {ConnectionOptions} from 'typeorm';
-import {ItemFilter} from '../entities';
-import {initial1563807128108} from '../migrations/1563807128108-initial';
+import {Trip, User} from "../entities";
+import {initial1595534135450} from "../migrations/1595534135450-initial";
 
 export const connectionOptions: ConnectionOptions = {
     type: 'mysql',
@@ -8,12 +8,14 @@ export const connectionOptions: ConnectionOptions = {
     port: Number(process.env.DB_PORT || 3306),
     username: String(process.env.DB_USERNAME || 'root'),
     password: String(process.env.DB_PASSWORD || 'root'),
-    database: String(process.env.DB_DATABASE || 'back_db'),
+    database: String(process.env.DB_DATABASE || 'trip'),
     migrationsRun: true,
     entities: [
-        ItemFilter,
+        Trip,
+        User
     ],
     migrations: [
+        initial1595534135450
     ],
     cli: {
         migrationsDir: './src/migrations',

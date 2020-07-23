@@ -1,32 +1,21 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {Trip} from "./trip.entity";
 
-@Entity('shares')
-export class Share {
+@Entity('Users')
+export class User {
 
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({type: "text"})
-    title: string;
+    @Column()
+    username: string;
 
-    @Column({nullable: true, type: "text"})
-    description?: string | null;
+    @Column()
+    password: string;
 
-    @Column({nullable: true})
-    src?: string | null;
+    @Column()
+    role: string;
 
-    @Column({type: "text"})
-    url: string;
-
-    @Column({type: "text"})
-    type: string;
-
-    @Column({unique: true})
-    slug: string;
-
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
+    @OneToMany(() => Trip, trip => trip.user, {cascade: true})
+    trips: Trip[];
 }

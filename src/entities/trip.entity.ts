@@ -1,14 +1,24 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
+import {User} from "./user.entity";
 
-@Entity('Users')
-export class User {
+@Entity('Trips')
+export class Trip {
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    username: string;
+    destination: string;
 
     @Column()
-    password: string;
+    startDate: Date;
+
+    @Column()
+    endDate: Date;
+
+    @Column({type: "text"})
+    comment: string;
+
+    @ManyToOne(() => User)
+    user: User;
 }

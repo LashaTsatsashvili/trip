@@ -1,8 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { TripModule } from './trip.module';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
-}
-bootstrap();
+const port = Number(process.env.APP_PORT || 3000);
+(async function bootstrap() {
+  const app = await NestFactory.create(TripModule);
+  app.enableCors();
+  await app.listen(port).then(() => {
+    // tslint:disable-next-line:no-console
+    console.log(`Server started on http://localhost:${port}`);
+  });
+})();

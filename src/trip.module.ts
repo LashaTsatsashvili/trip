@@ -12,4 +12,4 @@ import {connectionOptions} from "./configs/connection.option";
     },
   ],
 })
-export class AppModule {}
+export class TripModule {}

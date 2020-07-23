@@ -4,5 +4,5 @@
   ],
   "legacyWatch": true,
   "ext": "ts",
-  "exec": "ts-node --transpile-only -r tsconfig-paths/register -r dotenv/config ./src/app.ts  dotenv_config_path=../../.env"
+  "exec": "ts-node --transpile-only -r tsconfig-paths/register -r dotenv/config ./src/main.ts  dotenv_config_path=../../.env"
 }
