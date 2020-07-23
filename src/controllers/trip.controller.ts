@@ -1,11 +1,23 @@
-import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put, Request, UseGuards} from '@nestjs/common';
 import {TripService} from "../services";
-import {Trip} from "../interfaces";
+import {JwtAuthGuard} from "../guards/jwt-auth.guard";
 
 @Controller('trips')
 export class TripController {
 
     constructor(private tripService: TripService) {
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Get()
+    async getAll(@Request() req) {
+        return await this.tripService.getAll(req.user.userId);
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Get(':id')
+    async getOne(@Param('id') id: number) {
+        return await this.tripService.getOne(id);
     }
 
     @Post()

@@ -21,4 +21,12 @@ export class TripService {
     async delete(id: number) {
         return this.tripRepository.delete(id)
     }
+
+    async getAll(userId: any) {
+        return this.tripRepository.find({user: userId})
+    }
+
+    async getOne(id: number) {
+        return this.tripRepository.findOneOrFail(id);
+    }
 }
