@@ -10,15 +10,15 @@ export class TripService {
         this.tripRepository = connection.getRepository(Trip);
     }
 
-    async create() {
-
+    async create(trip: Trip) {
+        return this.tripRepository.save(trip);
     }
 
-    async update() {
-
+    async update(id: number, trip: Trip) {
+        return this.tripRepository.update(id, trip)
     }
 
     async delete(id: number) {
-
+        return this.tripRepository.delete(id)
     }
 }

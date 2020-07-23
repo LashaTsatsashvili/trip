@@ -9,15 +9,16 @@ export class UserController {
 
     @Post()
     async create(@Body() body: any) {
-    }
-
-    @Delete()
-    async delete(@Param('id') id: number) {
-
+        return await this.userService.create(body);
     }
 
     @Put()
     async update(@Param('id') id: number, @Body() body: any) {
+        return this.userService.update(id, body);
+    }
 
+    @Delete()
+    async delete(@Param('id') id: number) {
+        return this.userService.delete(id);
     }
 }

@@ -10,15 +10,15 @@ export class UserService {
         this.userRepository = connection.getRepository(User);
     }
 
-    async create() {
-
+    async create(user: User) {
+        return this.userRepository.save(user);
     }
 
-    async update() {
-
+    async update(id: number, user) {
+        return this.userRepository.update(id, user);
     }
 
     async delete(id: number) {
-
+        return this.userRepository.delete(id);
     }
 }
