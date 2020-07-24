@@ -11,7 +11,7 @@ export class TripController {
     @UseGuards(JwtAuthGuard)
     @Get()
     async getAll(@Request() req) {
-        return await this.tripService.getAll(req.user.userId);
+        return await this.tripService.getAll(req.user);
     }
 
     @UseGuards(JwtAuthGuard)

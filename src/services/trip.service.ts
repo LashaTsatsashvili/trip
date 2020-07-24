@@ -24,8 +24,12 @@ export class TripService {
         return this.tripRepository.delete(id)
     }
 
-    async getAll(userId: any) {
-        return this.tripRepository.find({user: userId})
+    async getAll(user: any) {
+        if (user.role === 'admin') {
+            return this.tripRepository.find();
+        }
+        return this.tripRepository.find({user: user.userId})
+
     }
 
     async getOne(id: number) {
