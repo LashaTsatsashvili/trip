@@ -28,7 +28,7 @@ import {AuthController} from "./controllers/auth.controller";
     imports:[
         JwtModule.register({
             secret: 'trip',
-            signOptions: { expiresIn: '500s' },
+            signOptions: { expiresIn: '500000000s' },
         }),
     ]
 })

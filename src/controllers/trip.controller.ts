@@ -20,16 +20,19 @@ export class TripController {
         return await this.tripService.getOne(id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post()
-    async create(@Body() trip: any) {
-        return await this.tripService.create(trip)
+    async create(@Body() trip: any, @Request() req) {
+        return await this.tripService.create(trip, req.user.userId)
     }
 
+    @UseGuards(JwtAuthGuard)
     @Put(':id')
     async update(@Param('id') id: number, @Body() body: any) {
         return this.tripService.update(id, body)
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete(':id')
     async delete(@Param('id') id: number) {
         return this.tripService.delete(id)

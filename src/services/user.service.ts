@@ -25,4 +25,7 @@ export class UserService {
     async findOne(username: string) {
         return this.userRepository.findOneOrFail({username})
     }
+    async findOneWithId(id: number) {
+        return this.userRepository.findOneOrFail(id)
+    }
 }
